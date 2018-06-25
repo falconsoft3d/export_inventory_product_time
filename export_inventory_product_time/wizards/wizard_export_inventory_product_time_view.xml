@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_wizard_export_inventory_product_time" model="ir.ui.view">
+            <field name="name">wizard.export.inventory.product.time.form</field>
+            <field name="model">wizard.export.inventory.product.time</field>
+            <field name="arch" type="xml">
+                <form string="Reporte de Inventario del Producto por Fecha">
+                    <group>
+                         <group>
+                             <!--<field name="date_init" />-->
+                             <field name="date_end" />
+                         </group>
+                    </group>
+                    <footer>
+                        
+                        <button string="Imprimir PDF" name="get_origin" type="object" default_focus="1" class="btn-primary"  />
+                        /
+                        <button string="Imprimir CSV" name="generate_file" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <act_window id="action_wizard_export_inventory_product_time"
+        multi="True"
+        key2="client_action_multi" name="Reporte de Inventario por Fecha"
+        res_model="wizard.export.inventory.product.time" src_model="product.template"
+        view_mode="form" target="new" view_type="form"  />
+    </data>
+</odoo>
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_summary_product_document">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <table style="width:100%;">
+                        <thead>
+                           <tr>
+                                <th class="text-center" style="width:100%;">
+                                    <h2><span>Reporte de Inventario de Productos</span></h2>
+                                </th>
+                           </tr>
+                         </thead>
+                    </table> 
+                    <br></br>
+                    <table style="width:100%;font-size: 12px;">
+                       <tr>
+                            <th class="text-center" style="width:100%;font-size: 16px;">Fecha ( <span t-field="o.date_end" ></span> )</th>
+                       </tr>
+                    </table>
+                    <br></br>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Producto</th>
+                                <!--<th class="text-right">Fecha</th>-->
+                                <!--<th class="text-right">Cantidad Comprada</th>-->
+                                <!--<th class="text-right">Cantidad Vendida</th>-->
+                                <th class="text-right">Cantidad en Inventario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="data['lines']" t-as="l">
+                                <tr>
+                                    <td><span t-esc="l['product_id']"/></td>
+                                    <td><span t-esc="l['product_name']"/></td><!--
+                                    <td class="text-right">
+                                        <span t-esc="l['date']"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="l['quantity_purchase']"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="l['quantity_sale']"/>
+                                    </td>-->
+                                    <td  class="text-right">
+                                        <span t-esc="l['quantity_inv']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <!-- "report_summary" es el id del reporte y debe ser igual al id del reporte en "report.xml"-->
+        <template id="report_product">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                     <t t-call="export_inventory_product_time.report_summary_product_document" t-lang="o.company_id.partner_id.lang" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

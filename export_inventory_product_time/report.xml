@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="product_report"
+            string="Reporte del Producto"
+            model="product.template" 
+            report_type="qweb-pdf"
+            file="export_inventory_product_time.report_product"
+            name="export_inventory_product_time.report_product"
+            attachment_use="True"
+            menu="False"
+            />
+    </data>
+</odoo>
+<!-- 3- Modelo del reporte -->
